@@ -4,9 +4,12 @@ import { LOGIN_USER } from "../../../api/auth/mutations";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import EPath from "@/routes/path";
 
 const LoginForm = () => {
 	const { toast } = useToast();
+	const navigate = useNavigate();
 	const usernameRef = useRef<HTMLInputElement>(null);
 	const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -18,6 +21,7 @@ const LoginForm = () => {
 				title: "Login success",
 				description: `Welcome ${displayName} to Tizz-flow`,
 			});
+			navigate(EPath.Index);
 		},
 		onError: (err) => {
 			toast({
