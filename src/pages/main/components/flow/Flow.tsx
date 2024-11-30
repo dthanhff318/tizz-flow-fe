@@ -1,10 +1,11 @@
 import AvatarComp from "@/components/avatars/avatar";
-import { Ellipsis } from "lucide-react";
+import FlowInteraction from "@/pages/main/components/flow/FlowInteraction";
+import { Ellipsis, Heart, MessageCircle } from "lucide-react";
 
 const paddingLeft = 36 + 16;
 const Flow = () => {
 	return (
-		<div className="flex flex-col px-6 py-4 border-solid border-[1px] border-b-border">
+		<div className="flex flex-col px-6 py-4 border-solid border-[1px] border-b-border gap-5 first:rounded-tl-3xl first:rounded-tr-3xl">
 			{/* Header */}
 			<div className="flex items-start gap-4">
 				<AvatarComp
@@ -13,7 +14,7 @@ const Flow = () => {
 					fallBack="TF"
 					className="size-[36px]"
 				/>
-				<div>
+				<div className="space-y-2">
 					<div className="flex items-center justify-between">
 						<div className="flex gap-2">
 							<span className="text-text-color font-semibold">tizz_onmic</span>
@@ -34,14 +35,20 @@ const Flow = () => {
 				</div>
 			</div>
 			{/* Image & Video */}
-			<div className={`w-full h-fit max-h-[435px] pl-[${paddingLeft}px]`}>
-				<div className="h-full overflow-scroll">
+			<div
+				className={`w-full max-h-[435px] pl-[${paddingLeft}px] overflow-hidden`}
+			>
+				<div className="h-full overflow-x-auto flex gap-2 snap-mandatory cursor-grab scroll-ps-6 snap-x snap-start">
 					<img
 						src="https://i.pinimg.com/236x/18/c4/4c/18c44cb4445b15e3fb30531ab467df2d.jpg"
 						alt=""
-						className="object-cover h-full"
+						className="object-cover max-w-[260px] max-h-[435px] w-full rounded-md"
 					/>
 				</div>
+			</div>
+			{/* Reaction */}
+			<div className={`pl-[${paddingLeft}px]`}>
+				<FlowInteraction />
 			</div>
 		</div>
 	);
