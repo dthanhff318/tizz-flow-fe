@@ -16,9 +16,9 @@ const Flow = () => {
 				/>
 				<div className="space-y-2">
 					<div className="flex items-center justify-between">
-						<div className="flex gap-2">
+						<div className="flex gap-2 items-center">
 							<span className="text-text-color font-semibold">tizz_onmic</span>
-							<span className="text-secondary-foreground">21 hours ago</span>
+							<span className="text-text-primary text-sm">21 hours ago</span>
 						</div>
 						<div className="">
 							<Ellipsis className="cursor-pointer" />
@@ -36,7 +36,7 @@ const Flow = () => {
 			</div>
 			{/* Image & Video */}
 			<div
-				className={`w-full max-h-[435px] pl-[${paddingLeft}px] overflow-hidden`}
+				className={`w-full max-h-[435px] overflow-hidden pl-[${paddingLeft}px]`}
 			>
 				<div className="h-full overflow-x-auto flex gap-2 snap-mandatory cursor-grab scroll-ps-6 snap-x snap-start">
 					<img

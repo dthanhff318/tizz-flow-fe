@@ -11,13 +11,24 @@ const Layout = (): FunctionComponent => {
 	};
 	return (
 		<>
-			<div className="top-0 right-0 left-0 h-[74px] flex items-center justify-end px-4 fixed">
-				<Button className="font-semibold mr-12" onClick={handleLinkToLoginPage}>
-					Login
-				</Button>
+			<div className="top-0 right-0 left-0 w-[100vw] h-[74px] flex items-center justify-between px-4 fixed bg-background-bold">
+				<div className="flex-1 max-w-[20%]"></div>
+				<div className="shrink-0">
+					<h2 className="font-semibold  justify-self-center ">Home</h2>
+				</div>
+				<div className="flex-1 max-w-[20%] text-right">
+					<Button
+						className="font-semibold mr-12"
+						onClick={handleLinkToLoginPage}
+					>
+						Login
+					</Button>
+				</div>
 			</div>
 			<Sidebar />
-			<Outlet />
+			<div className="mt-[74px]">
+				<Outlet />
+			</div>
 			{/* <DrawerFillInfo /> */}
 		</>
 	);
