@@ -1,6 +1,6 @@
 import AvatarComp from "@/components/avatars/avatar";
 import FlowInteraction from "@/pages/main/components/flow/FlowInteraction";
-import { Ellipsis, Heart, MessageCircle } from "lucide-react";
+import { Ellipsis } from "lucide-react";
 
 const paddingLeft = 36 + 16;
 const Flow = () => {

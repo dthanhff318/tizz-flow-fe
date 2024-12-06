@@ -1,0 +1,6 @@
+.block-note-container-custom {
+	padding: 0 !important;
+}
+.block-note-container-custom .bn-editor {
+	background-color: transparent !important;
+}

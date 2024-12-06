@@ -3,6 +3,7 @@ import { FunctionComponent } from "../../common/types";
 import { Button } from "@/components/ui/button";
 import EPath from "@/routes/path";
 import Sidebar from "@/components/layouts/components/sidebar";
+import NewFlow from "@/components/dialogs/dialog-new-flow";
 
 const Layout = (): FunctionComponent => {
 	const navigate = useNavigate();
@@ -26,9 +27,10 @@ const Layout = (): FunctionComponent => {
 				</div>
 			</div>
 			<Sidebar />
-			<div className="mt-[74px]">
+			<div className="mt-[74px] h-[calc(100vh-74px)] overflow-y-scroll">
 				<Outlet />
 			</div>
+			<NewFlow />
 			{/* <DrawerFillInfo /> */}
 		</>
 	);
