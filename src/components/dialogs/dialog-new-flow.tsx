@@ -1,12 +1,22 @@
 import AvatarComp from "@/components/avatars/avatar";
 import TextEditor from "@/components/text-editor/text-editor";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogFooter } from "@/components/ui/dialog";
+import {
+	Dialog,
+	DialogContent,
+	DialogFooter,
+	DialogTrigger,
+} from "@/components/ui/dialog";
+import { ReactNode } from "react";
 
-const NewFlow = () => {
+type TProps = {
+	children?: ReactNode;
+};
+const NewFlow = ({ children }: TProps) => {
 	return (
-		<Dialog open>
-			<DialogContent className="sm:max-w-[560px]">
+		<Dialog>
+			<DialogTrigger asChild>{children}</DialogTrigger>
+			<DialogContent className="sm:max-w-[560px]" hiddenCloseBtn>
 				<div className="grid gap-4 py-2">
 					<div className="flex items-start gap-4">
 						<AvatarComp
@@ -23,14 +33,19 @@ const NewFlow = () => {
 									</span>
 								</div>
 							</div>
-							<div className="w-full">
+							<div className="w-full min-h-20">
 								<TextEditor />
 							</div>
 						</div>
 					</div>
 				</div>
-				<DialogFooter>
-					<Button type="submit">Save changes</Button>
+				<DialogFooter className="!w-full flex !justify-between items-center">
+					<span className="text-text-primary text-sm">
+						Anyone can reply and quote
+					</span>
+					<Button variant="outline">
+						<p className="text-text-color">Post</p>
+					</Button>
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>
