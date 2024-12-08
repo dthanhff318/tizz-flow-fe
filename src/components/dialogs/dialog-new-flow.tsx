@@ -7,12 +7,35 @@ import {
 	DialogFooter,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
+import { Image, CircleX } from "lucide-react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 type TProps = {
 	children?: ReactNode;
 };
 const NewFlow = ({ children }: TProps) => {
+	const [content, setContent] = useState("");
+	const [files, setFiles] = useState<File[] | null>(null);
+
+	const previewImgs = Array.from(files ?? [])?.map((e) =>
+		URL.createObjectURL(e)
+	);
+
+	const onUploadFile = (e: any) => {
+		const files = e.target.files;
+		setFiles(files);
+	};
+
+	const onRemoveFile = () => {
+		setFiles(null);
+	};
+
+	const onChangeContent = (e: string) => {
+		setContent(e);
+	};
+	const handleCreateFlow = () => {};
 	return (
 		<Dialog>
 			<DialogTrigger asChild>{children}</DialogTrigger>
@@ -34,16 +57,36 @@ const NewFlow = ({ children }: TProps) => {
 								</div>
 							</div>
 							<div className="w-full min-h-20">
-								<TextEditor />
+								<TextEditor onChange={onChangeContent} />
 							</div>
 						</div>
+					</div>
+					<div>
+						<Label htmlFor="flow-picture">
+							<Image className="text-text-color cursor-pointer hover:text-primary" />
+						</Label>
+						<Input
+							className="hidden"
+							id="flow-picture"
+							type="file"
+							onInput={onUploadFile}
+						/>
+					</div>
+					<div>
+						{previewImgs.map((url) => {
+							return <ImageUpload url={url} onRemoveFile={onRemoveFile} />;
+						})}
 					</div>
 				</div>
 				<DialogFooter className="!w-full flex !justify-between items-center">
 					<span className="text-text-primary text-sm">
 						Anyone can reply and quote
 					</span>
-					<Button variant="outline">
+					<Button
+						variant="outline"
+						disabled={!files}
+						onClick={handleCreateFlow}
+					>
 						<p className="text-text-color">Post</p>
 					</Button>
 				</DialogFooter>
@@ -53,3 +96,23 @@ const NewFlow = ({ children }: TProps) => {
 };
 
 export default NewFlow;
+
+const ImageUpload = ({
+	url,
+	onRemoveFile,
+}: {
+	url: string;
+	onRemoveFile: () => void;
+}) => {
+	return (
+		<div className="w-[320px] max-h-[350px] relative group ">
+			<img src={url} alt="" className="w-full object-cover rounded-lg" />
+			<div
+				className="absolute -top-[8px] -right-[8px] cursor-pointer opacity-0 group-hover:opacity-100 transition-all"
+				onClick={onRemoveFile}
+			>
+				<CircleX />
+			</div>
+		</div>
+	);
+};

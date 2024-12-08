@@ -14,6 +14,10 @@ import {
 } from "@blocknote/react";
 import "./overrideBlocknote.css";
 
+type TProps = {
+	onChange: (content: string) => void;
+};
+
 const Mention = createReactInlineContentSpec(
 	{
 		type: "mention",
@@ -66,7 +70,7 @@ const getMentionMenuItems = (
 	}));
 };
 
-export function App() {
+export function TextEditor({ onChange }: TProps) {
 	const editor = useCreateBlockNote({
 		schema,
 	});
@@ -81,6 +85,7 @@ export function App() {
 			tableHandles={false}
 			// slashMenu={false}
 			className="block-note-container-custom"
+			onChange={() => onChange(JSON.stringify(editor.document))}
 		>
 			<SuggestionMenuController
 				minQueryLength={2}
@@ -93,4 +98,4 @@ export function App() {
 	);
 }
 
-export default App;
+export default TextEditor;
