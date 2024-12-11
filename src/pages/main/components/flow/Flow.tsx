@@ -1,11 +1,19 @@
 import AvatarComp from "@/components/avatars/avatar";
 import FlowInteraction from "@/pages/main/components/flow/FlowInteraction";
+import flowStore from "@/store/flowStore";
 import { Ellipsis } from "lucide-react";
 
 const paddingLeft = 36 + 16;
 const Flow = () => {
+	const { setFlow } = flowStore();
+	const onClickToSeeFlow = () => {
+		setFlow({ images: [], content: "" });
+	};
 	return (
-		<div className="flex flex-col px-6 py-4 border-solid border-[1px] border-b-border gap-5 first:rounded-tl-3xl first:rounded-tr-3xl">
+		<div
+			onClick={onClickToSeeFlow}
+			className="flex flex-col px-6 py-4 border-solid border-[1px] border-b-border gap-5 first:rounded-tl-3xl first:rounded-tr-3xl"
+		>
 			{/* Header */}
 			<div className="flex items-start gap-4">
 				<AvatarComp
@@ -35,9 +43,7 @@ const Flow = () => {
 				</div>
 			</div>
 			{/* Image & Video */}
-			<div
-				className={`w-full max-h-[435px] overflow-hidden pl-[${paddingLeft}px]`}
-			>
+			<div className={`w-full max-h-[435px] overflow-hidden pl-[52px]`}>
 				<div className="h-full overflow-x-auto flex gap-2 snap-mandatory cursor-grab scroll-ps-6 snap-x snap-start">
 					<img
 						src="https://i.pinimg.com/236x/18/c4/4c/18c44cb4445b15e3fb30531ab467df2d.jpg"

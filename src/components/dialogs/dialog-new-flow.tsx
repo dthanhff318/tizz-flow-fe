@@ -61,8 +61,8 @@ const NewFlow = ({ children }: TProps) => {
 							</div>
 						</div>
 					</div>
-					<div>
-						<Label htmlFor="flow-picture">
+					<div className="w-fit">
+						<Label className="w-fit" htmlFor="flow-picture">
 							<Image className="text-text-color cursor-pointer hover:text-primary" />
 						</Label>
 						<Input
@@ -84,7 +84,7 @@ const NewFlow = ({ children }: TProps) => {
 					</span>
 					<Button
 						variant="outline"
-						disabled={!files}
+						disabled={!content}
 						onClick={handleCreateFlow}
 					>
 						<p className="text-text-color">Post</p>
